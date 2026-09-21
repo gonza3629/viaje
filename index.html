@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasaporte Oficial de Destino</title>
+    <style>
+        /* Estilos Generales */
+        body { 
+            background-color: #121212; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            color: #fff; 
+        } 
+        
+        /* Contenedor del Pasaporte */
+        .passport { 
+            background: linear-gradient(135deg, #4a121a 0%, #1c0508 100%); 
+            width: 360px; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6); 
+            border: 2px solid #d4af37; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+        } 
+        
+        /* Detalles dorados tipo grabado */
+        .passport::before { 
+            content: ''; 
+            position: absolute; 
+            top: 10px; 
+            left: 10px; 
+            right: 10px; 
+            bottom: 10px; 
+            border: 1px solid rgba(212, 175, 55, 0.2); 
+            border-radius: 10px; 
+            pointer-events: none; 
+        } 
+        
+        .header-title { 
+            color: #d4af37; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            font-size: 14px; 
+            margin-bottom: 5px; 
+        } 
+        
+        .passport-title { 
+            color: #d4af37; 
+            text-transform: uppercase; 
+            letter-spacing: 6px; 
+            font-size: 24px; 
+            margin-top: 0; 
+            font-weight: bold; 
+        } 
+        
+        /* Escudo / Ícono Central */
+        .crest { 
+            font-size: 60px; 
+            color: #d4af37; 
+            margin: 20px 0; 
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); 
+        } 
+
+        /* Foto de perfil del pasaporte */
+        .passport-photo {
+            width: 110px;
+            height: 130px;
+            margin: 0 auto 20px auto;
+            border: 2px solid #d4af37;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        /* Datos del pasajero */
+        .info-section { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-radius: 8px; 
+            padding: 15px; 
+            margin-bottom: 25px; 
+            text-align: left; 
+            border-left: 3px solid #d4af37; 
+        } 
+        
+        .info-row { 
+            margin-bottom: 10px; 
+        } 
+        
+        .label { 
+            font-size: 11px; 
+            color: #b3b3b3; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Botones de acción */
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .btn-yes {
+            background-color: #d4af37;
+            color: #1c0508;
+        }
+
+        .btn-yes:hover {
+            background-color: #f3cb45;
+            transform: scale(1.05);
+        }
+
+        .btn-no {
+            background-color: transparent;
+            color: #b3b3b3;
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+        }
+
+        /* Sección del calendario (oculta al inicio) */
+        .date-section {
+            display: none;
+            margin-top: 25px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px dashed #d4af37;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .date-input {
+            width: 80%;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #d4af37;
+            background-color: #121212;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .date-input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="passport">
+        <div id="main-passport-content">
+            <div class="header-title">República del Amor</div>
+            <div class="passport-title">Pasaporte</div>
+            
+            <div class="crest">👑</div>
+            
+            <!-- Foto vinculada a tu carpeta local -->
+            <div class="passport-photo" style="background-image: url('fotos/IMG_3191.jpg');"></div>
+
+            <div class="info-section">
+                <div class="info-row">
+                    <span class="label">Pasajero </span>
+                    <span class="value">Orona Martina</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Destino Solicitado</span>
+                    <span class="value">Nuestro Futuro Juntos</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Nota de Visado</span>
+                    <span class="value" style="font-size: 14px; font-weight: normal; font-style: italic;">
+                        "Cometí errores, pero aprendí de ellos. Este pasaporte solo es válido si decidimos viajar juntos otra vez. ¿Te sumás?"
+                    </span>
+                </div>
+            </div>
+
+            <div class="header-title" style="font-size: 11px;" id="question-text">¿Aceptás el embarque?</div>
+            
+            <div class="btn-container" id="initial-buttons">
+                <button class="btn btn-yes" id="btnYes">SÍ, ACEPTO</button>
+                <button class="btn btn-no" id="btnNo">NO</button>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DEL CALENDARIO -->
+        <div class="date-section" id="dateSection">
+            <div class="header-title" style="font-size: 13px;">¡Embarque Aceptado!</div>
+            <p style="font-size: 14px; margin: 10px 0 5px 0; color: #b3b3b3;">Seleccioná la fecha de nuestro primer destino (salida a tomar algo):</p>
+            
+            <input type="date" class="date-input" id="flightDate">
+            
+            <button class="btn btn-yes" id="btnConfirmDate" style="width: 100%; display: block;">CONFIRMAR VUELO ✈️</button>
+        </div>
+    </div>
+
+    <script>
+        const MI_WHATSAPP = '5493513739728'; 
+
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const btnConfirmDate = document.getElementById('btnConfirmDate');
+        const dateSection = document.getElementById('dateSection');
+        const initialButtons = document.getElementById('initial-buttons');
+        const questionText = document.getElementById('question-text');
+        const flightDateInput = document.getElementById('flightDate');
+
+        // Configurar el calendario para no permitir fechas pasadas
+        const hoy = new Date().toISOString().split('T')[0];
+        flightDateInput.min = hoy;
+
+        // Mostrar calendario al presionar SÍ
+        btnYes.addEventListener('click', () => {
+            initialButtons.style.display = 'none';
+            questionText.style.display = 'none';
+            dateSection.style.display = 'block';
+        });
+
+        // Confirmar Fecha y mandar a WhatsApp
+        btnConfirmDate.addEventListener('click', () => {
+            const fechaSeleccionada = flightDateInput.value;
+            
+            if (!fechaSeleccionada) {
+                alert('Por favor, seleccioná una fecha para nuestro viaje.');
+                return;
+            }
+
+            // Formatear fecha a DD/MM/YYYY
+            const partes = fechaSeleccionada.split('-');
+            const fechaFormateada = `${partes[2]}/${partes[1]}/${partes[0]}`;
+
+            // Mensaje final que te llegará
+            const textoMensaje = `¡Pasaporte Oficial Confirmado! ✈️ Acepto el embarque para nuestro futuro juntos. Reservé la fecha del ${fechaFormateada} para nuestra primera parada. ¡Hablemos!`;
+            
+            const urlWhatsApp = `https://wa.me/5493513739728?text=${encodeURIComponent(textoMensaje)}`;
+            window.open(urlWhatsApp, '_blank');
+        });
+
+        // Truco del botón NO que se escapa
+        btnNo.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+            
+            btnNo.style.position = 'fixed';
+            btnNo.style.left = `${x}px`;
+            btnNo.style.top = `${y}px`;
+        });
+    </script>
+</body>
+</html>
